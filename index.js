@@ -8,6 +8,7 @@ app.listen(3000, () => console.log("listening at 3000"));
 app.use(express.static("public"));
 app.use(express.json({ limit: "1mb" }));
 
+//API to return weather data based on latitude and longitude
 app.post("/data", async (request, response) => {
   const weatherInfo = await (
     await fetch(
@@ -20,6 +21,7 @@ app.post("/data", async (request, response) => {
   });
 });
 
+//API to return list of cities with their coordinates
 app.post("/geo", async (request, response) => {
   const data = await (
     await fetch(
